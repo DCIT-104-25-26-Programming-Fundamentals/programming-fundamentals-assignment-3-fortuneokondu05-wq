@@ -41,5 +41,36 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+function isPrime(n) {
+  // Numbers less than 2 are NOT prime
+  if (n < 2) {
+    return false;
+  }
+  
+  // Check if n is divisible by any number from 2 to sqrt(n)
+  for (let i = 2; i * i <= n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  
+  // If no divisors found, it's prime
+  return true;
+}
 
+function main() {
+  const readline = require('readline-sync');
+  
+  // Read integer input from user
+  const number = readline.questionInt('Enter a number: ');
+  
+  // Call isPrime and print result
+  if (isPrime(number)) {
+    console.log(number + ' is a prime number.');
+  } else {
+    console.log(number + ' is NOT a prime number.');
+  }
+}
+
+main();
 
