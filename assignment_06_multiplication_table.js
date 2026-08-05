@@ -58,5 +58,53 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+function printSingleTable(num) {
+  console.log('Multiplication Table for ' + num + ':');
+  for (let i = 1; i <= 12; i++) {
+    console.log(num + ' x ' + i + ' = ' + (num * i));
+  }
+}
 
+function printMultipleTables(n) {
+  for (let num = 1; num <= n; num++) {
+    console.log('Multiplication Table for ' + num + ':');
+    for (let i = 1; i <= 12; i++) {
+      console.log(num + ' x ' + i + ' = ' + (num * i));
+    }
+    
+    // Add separator line between tables (except after the last one)
+    if (num < n) {
+      console.log('----');
+    }
+  }
+}
+
+function main() {
+  const readline = require('readline-sync');
+  
+  console.log('PART A - Single Table');
+  const num = parseInt(readline.question('Enter a number: '));
+  
+  // Validate positive integer
+  if (isNaN(num) || num <= 0) {
+    console.log('Error: Please enter a valid positive integer.');
+    return;
+  }
+  
+  printSingleTable(num);
+  
+  console.log('\n' + '='.repeat(50));
+  console.log('PART B - Bonus: Tables from 1 to N');
+  const n = parseInt(readline.question('Enter N: '));
+  
+  // Validate positive integer
+  if (isNaN(n) || n <= 0) {
+    console.log('Error: Please enter a valid positive integer.');
+    return;
+  }
+  
+  printMultipleTables(n);
+}
+
+main();
 
