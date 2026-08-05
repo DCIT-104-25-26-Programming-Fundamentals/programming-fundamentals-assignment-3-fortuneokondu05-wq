@@ -53,5 +53,60 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+function generateFibonacci(n) {
+  const sequence = [];
+  
+  if (n >= 1) sequence.push(0);
+  if (n >= 2) sequence.push(1);
+  
+  for (let i = 2; i < n; i++) {
+    sequence.push(sequence[i - 1] + sequence[i - 2]);
+  }
+  
+  return sequence;
+}
 
+function isFibonacci(num) {
+  if (num < 0) return false;
+  
+  let a = 0, b = 1;
+  
+  if (num === 0 || num === 1) return true;
+  
+  while (b < num) {
+    const temp = a + b;
+    a = b;
+    b = temp;
+  }
+  
+  return b === num;
+}
+
+function main() {
+  const readline = require('readline-sync');
+  
+  console.log('PART A - Print the first N Terms');
+  const n = parseInt(readline.question('How many terms? '));
+  
+  // Validate positive integer for N
+  if (isNaN(n) || n <= 0) {
+    console.log('Error: N must be a positive integer.');
+    return;
+  }
+  
+  const sequence = generateFibonacci(n);
+  console.log('Fibonacci sequence: ' + sequence.join(' '));
+  
+  console.log('\n' + '='.repeat(50));
+  console.log('PART B - Check if a Number Belongs to the Sequence');
+  const number = parseInt(readline.question('Enter a number to check: '));
+  
+  if (isFibonacci(number)) {
+    console.log(number + ' is a Fibonacci number.');
+  } else {
+    console.log(number + ' is NOT a Fibonacci number.');
+  }
+}
+
+main();
 
