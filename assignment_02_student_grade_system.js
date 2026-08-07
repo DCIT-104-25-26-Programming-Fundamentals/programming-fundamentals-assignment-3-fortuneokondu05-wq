@@ -48,39 +48,18 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
-const readline = require('readline-sync');
+const input = readline.question('Enter student score (0-100): ');
 
-// Function to calculate and return grade, or null if out of range
-function getGrade(score) {
-    if (isNaN(score) || score < 0 || score > 100) {
-        return null;
-    } else if (score >= 80) {
-        return 'A';
-    } else if (score >= 70) {
-        return 'B';
-    } else if (score >= 60) {
-        return 'C';
-    } else if (score >= 50) {
-        return 'D';
-    } else {
-        return 'F';
-    }
+// Check for empty input FIRST
+if (input.trim() === '') {
+  console.log('Error: Score must be between 0 and 100.');
+  return;
 }
 
-// Main execution function
-function main() {
-    const input = readline.question('Enter student score (0-100): ');
-    const score = Number(input);
+const score = Number(input);
+const grade = getGrade(score);
 
-    const grade = getGrade(score);
-
-    if (grade === null || input.trim() === '') {
-        console.log('Error: Score must be between 0 and 100.');
-    } else {
-        console.log(Grade: ${grade});
-    }
+if (grade === null) {
+  console.log('Error: Score must be between 0 and 100.');
 }
-
-// Run the main function
-main();
 
