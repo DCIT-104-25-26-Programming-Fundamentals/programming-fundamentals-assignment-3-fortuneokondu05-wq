@@ -98,7 +98,7 @@ function displayMenu() {
 function addTask() {
   const taskDescription = readline.question('Enter task: ');
   tasks.push(taskDescription);
-  console.log(Task added: "${taskDescription}");
+  console.log(`Task added: "${taskDescription}"`);
 }
 
 function viewTasks() {
@@ -107,7 +107,7 @@ function viewTasks() {
   } else {
     console.log('\nYour Tasks:');
     for (let i = 0; i < tasks.length; i++) {
-      console.log(${i + 1}. ${tasks[i]});
+      console.log(`${i + 1}. ${tasks[i]}`);
     }
   }
 }
@@ -128,7 +128,7 @@ function deleteTask() {
 
   const deletedTask = tasks[taskNumber - 1];
   tasks.splice(taskNumber - 1, 1);
-  console.log(Task "${deletedTask}" has been removed.);
+  console.log(`Task "${deletedTask}" has been removed.`);
 }
 
 function quit() {
